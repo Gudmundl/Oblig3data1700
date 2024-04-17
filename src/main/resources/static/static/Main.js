@@ -13,8 +13,6 @@ function buyTicket() {
     } else if (!validatePhone(phone)) {
         form.classList.add('has-error')
         alert('Vennligst skriv inn et gyldig telefonnummer.');
-
-
     } else if (!validateName(firstName)) {
         alert('Vennligst skriv inn et gyldig fornavn.');
     } else if (!validateName(lastName)) {
@@ -34,7 +32,7 @@ function buyTicket() {
         };
 
         tickets.push(ticket);
-        displayTickets();
+        saveTickets();
         clearForm();
     }
 
@@ -54,22 +52,36 @@ function validatePhone(phone) {
     const re = /^(0047|\+47|47)?\d{8}$/;
     return re.test(phone);
 }
-//clears tickets table
-function clearTickets() {
-    tickets = [];
-    displayTickets();
+
+
+function saveTickets() {
+    const ticketList = document.getElementById('ticketList');
+
+        $.post("/lagre", ticketList, function(){})
+        hentBilletter()
 }
 
-function displayTickets() {
-    const ticketList = document.getElementById('ticketList');
-    ticketList.innerHTML = '';
-//adds tickets to list
-    tickets.forEach(ticket => {
-        const ticketItem = document.createElement('tb');
-        ticketItem.textContent = `Navn: ${ticket.firstName} ${ticket.lastName}, Film: ${ticket.film}, E-post: ${ticket.email}, Telefon: ${ticket.phone}, Antall: ${ticket.quantity}`;
-        ticketList.appendChild(ticketItem);
+function hentBilletter(){
+    $.get("/hentBilletter", function(visBilletter){
+        formaterBilletter(visBilletter);
     });
 }
+function formaterBilletter(visBilletter){
+    let ut = "";
+    for (let ticket of visBilletter){
+        ut += "Film: " + ticket.film + " Antall: " + ticket.quantity + " Navn: " + ticket.firstName + " " + ticket.lastName + " Telefon: " + ticket.phone + " Epost: " + ticket.email + "<br>";
+    }
+    document.getElementById("output").innerHTML = ut;
+}
+//clears tickets table
+function clearTickets() {
+
+    $.post("/slett", function(){
+        saveTickets();
+    });
+}
+
+
 //clears forms by changing values to empty
 function clearForm() {
     document.getElementById('firstName').value = '';
