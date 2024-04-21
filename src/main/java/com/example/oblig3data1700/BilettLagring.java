@@ -1,19 +1,19 @@
 package com.example.oblig3data1700;
 
-public class bilettLagring {
+public class BilettLagring {
 
     private String firstName;
     private String lastName;
     private String film;
     private String email;
     private String phone;
-    private int quantity;
+    private Integer quantity;
 
-    public bilettLagring() {
+    public BilettLagring() {
 
     }
 
-    public bilettLagring(String firstName, String lastName, String film, String email, String phone, int quantity) {
+    public BilettLagring(String firstName, String lastName, String film, String email, String phone, Integer quantity) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.film = film;
@@ -62,11 +62,11 @@ public class bilettLagring {
         this.phone = phone;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 }

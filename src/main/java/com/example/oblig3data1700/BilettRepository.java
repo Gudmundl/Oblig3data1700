@@ -1,6 +1,6 @@
 package com.example.oblig3data1700;
 
-
+import com.example.oblig3data1700.BilettLagring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,24 +9,24 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 @Repository
-public class bilettRepository {
+public class BilettRepository {
 
     @Autowired
     private JdbcTemplate db;
 
 
-    public void saveTicket(bilettLagring ticketItem) {
+    public void lagreBillett(BilettLagring ticketItem) {
         String sql = "INSERT INTO ticketItem (firstName, lastName,  film,  email,  phone, quantity) VALUES(?,?,?,?,?,?)";
         db.update(sql, ticketItem.getFilm(),ticketItem.getEmail(),ticketItem.getFirstName(),ticketItem.getPhone(),ticketItem.getLastName(),ticketItem.getQuantity());
     }
 
-    public List<bilettLagring> hentAlleBilletter(){
-        String sql = "SELECT * FROM billett ORDER BY etternavn DESC";
-        return db.query(sql, new BeanPropertyRowMapper<>(bilettLagring.class));
+    public List<BilettLagring> hentAlleBilletter(){
+        String sql = "SELECT * FROM ticketItem ORDER BY id DESC";
+        return db.query(sql, new BeanPropertyRowMapper<>(BilettLagring.class));
     }
 
-    public  void clearAllTickets(){
-        String sql = "DELETE FROM bilett";
+    public  void slettAlleBilletter(){
+        String sql = "DELETE FROM ticketItem";
         db.update(sql);
     }
 

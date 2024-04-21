@@ -9,21 +9,21 @@ import java.util.List;
 
 
 @RestController
-public class controller {
+public class Controller {
 
     @Autowired
-    bilettRepository rep;
+    BilettRepository rep;
 
     @PostMapping("/lagre")
-    public void save(bilettLagring ticketItem)
-    {rep.saveTicket(ticketItem);}
+    public void save(BilettLagring ticketItem)
+    {rep.lagreBillett(ticketItem);}
 
     @GetMapping("/hentBiletter")
-    public List<bilettLagring> getBilettliste() {
+    public List<BilettLagring> getBilettliste() {
         return  rep.hentAlleBilletter();
     }
     @PostMapping("/slett")
-    public void clearForm(){rep.clearAllTickets();}
+    public void clearForm(){rep.slettAlleBilletter();}
 
 
 
