@@ -1,6 +1,5 @@
 package com.example.oblig3data1700;
 
-import com.example.oblig3data1700.BilettLagring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
