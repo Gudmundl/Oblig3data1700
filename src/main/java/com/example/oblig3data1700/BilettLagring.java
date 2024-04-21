@@ -2,47 +2,23 @@ package com.example.oblig3data1700;
 
 public class BilettLagring {
 
-    private String firstName;
-    private String lastName;
-    private String film;
     private String email;
     private String phone;
+    private String firstName;
+    private String lastName;
     private Integer quantity;
+    private String film;
 
     public BilettLagring() {
 
     }
 
-    public BilettLagring(String firstName, String lastName, String film, String email, String phone, Integer quantity) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.film = film;
+    public BilettLagring(String email, String phone, String firstName, String lastName, Integer quantity, String film) {
         this.email = email;
         this.phone = phone;
-        this.quantity = quantity;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getFilm() {
-        return film;
-    }
-
-    public void setFilm(String film) {
+        this.quantity = quantity;
         this.film = film;
     }
 
@@ -62,11 +38,35 @@ public class BilettLagring {
         this.phone = phone;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public String getFilm() {
+        return film;
+    }
+
+    public void setFilm(String film) {
+        this.film = film;
     }
 }

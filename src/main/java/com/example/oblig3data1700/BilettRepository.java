@@ -16,8 +16,8 @@ public class BilettRepository {
 
 
     public void lagreBillett(BilettLagring ticketItem) {
-        String sql = "INSERT INTO ticketItem (firstName, lastName,  film,  email,  phone, quantity) VALUES(?,?,?,?,?,?)";
-        db.update(sql, ticketItem.getFilm(),ticketItem.getEmail(),ticketItem.getFirstName(),ticketItem.getPhone(),ticketItem.getLastName(),ticketItem.getQuantity());
+        String sql = "INSERT INTO ticketItem (email, phone,  firstName,  lastName,  quantity, film) VALUES(?,?,?,?,?,?)";
+        db.update(sql, ticketItem.getEmail(),ticketItem.getPhone(),ticketItem.getFirstName(),ticketItem.getLastName(),ticketItem.getQuantity(),ticketItem.getFilm());
     }
 
     public List<BilettLagring> hentAlleBilletter(){

@@ -1,12 +1,12 @@
 
 function buyTicket() {
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let film = document.getElementById('film').value;
     let email = document.getElementById('email').value;
     let phone = document.getElementById('phone').value;
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
     let quantity = document.getElementById('quantity').value;
-//checks if values are there and corrext
+    let film = document.getElementById('film').value;
+//checks if values are there and correct
     if (!validateEmail(email)) {
         alert('Vennligst skriv inn en gyldig e-postadresse.');
     } else if (!validatePhone(phone)) {
@@ -47,13 +47,14 @@ function validatePhone(phone) {
 
 function sendTicketsDb() {
     const ticketItem = {
-        filmer: $("#film").val(),
-        antallBiletter: $("#quantity").val(),
-        fornNavn: $("#firstName").val(),
-        etterNavn: $("#lastName").val(),
-        telefonNr: $("#phone").val(),
-        epost: $("#email").val()
+        email: $("#email").val(),
+        phone: $("#phone").val(),
+        firstName: $("#firstName").val(),
+        lastName: $("#lastName").val(),
+        quantity: $("#quantity").val(),
+        film: $("#film").val()
     };
+
     $.post("/lagre", ticketItem, function(){
     });
     //clears form
@@ -62,6 +63,7 @@ function sendTicketsDb() {
 
 function  getDbTickets(){
     $.get("/hentBilletter", function(BilletterVis){
+
         showDbTickets(BilletterVis);
     });
 }
