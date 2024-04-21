@@ -8,3 +8,4 @@ CREATE TABLE ticketItem(
                         film VARCHAR(255) NOT NULL,
                         PRIMARY KEY (id)
 );
+
