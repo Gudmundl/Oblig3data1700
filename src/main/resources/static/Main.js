@@ -53,14 +53,14 @@ function sendTicketsDb() {
         film: $("#film").val()
     };
 
-    $.post("/lagre", ticketItem, function(){
+    $.post("/saveTicket", ticketItem, function(){
     });
     //clears form
     document.getElementById("ticketForm").reset();
 }
 
 function  getDbTickets(){
-    $.get("/hentBilletter", function(VisBilletter){
+    $.get("/getTicketsDB", function(VisBilletter){
 
         showDbTickets(VisBilletter);
     });
@@ -106,7 +106,7 @@ function showDbTickets(VisBilletter) {
 
 //clears tickets table
 function clearTickets() {
-    $.post("/slett", function(){
+    $.post("/deleteAll", function(){
         getDbTickets();
     });
 }
@@ -115,7 +115,6 @@ function deleteTicketId(){
     let idForDelete = {id: $("#deleteWithId").val()}
     $.post("/deleteOne", idForDelete, function () {
     });
-    document.getElementById("outputtest").innerHTML = idForDelete;
-    document.getElementById("slettForm").reset();
+    document.getElementById("deleteIdForm").reset();
 }
 

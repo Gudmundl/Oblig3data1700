@@ -8,27 +8,27 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 @Repository
-public class BilettRepository {
+public class TicketRepository {
 
     @Autowired
     private JdbcTemplate db;
 
 
-    public void lagreBillett(BilettLagring ticketItem) {
+    public void saveTickets(TicketSaving ticketItem) {
         String sql = "INSERT INTO ticketItem (email, phone,  firstName,  lastName,  quantity, film) VALUES(?,?,?,?,?,?)";
         db.update(sql, ticketItem.getEmail(),ticketItem.getPhone(),ticketItem.getFirstName(),ticketItem.getLastName(),ticketItem.getQuantity(),ticketItem.getFilm());
     }
 
-    public List<BilettLagring> hentAlleBilletter(){
+    public List<TicketSaving>getAllTickets(){
         String sql = "SELECT * FROM ticketItem ORDER BY id ASC ";
-        return db.query(sql, new BeanPropertyRowMapper<>(BilettLagring.class));
+        return db.query(sql, new BeanPropertyRowMapper<>(TicketSaving.class));
     }
 
-    public  void slettAlleBilletter(){
+    public  void deleteAllTickets(){
         String sql = "DELETE FROM ticketItem";
         db.update(sql);
     }
-    public  void deleteOneTicket(BilettLagring idForDelete){
+    public  void deleteOneTicket(TicketSaving idForDelete){
         String sql = "DELETE FROM ticketItem WHERE id = ?";
         db.update(sql, idForDelete.getId());
     }

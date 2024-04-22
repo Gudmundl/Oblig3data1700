@@ -1,6 +1,6 @@
 package com.example.oblig3data1700;
 
-public class BilettLagring {
+public class TicketSaving {
 
     private Integer id;
     private String email;
@@ -10,11 +10,11 @@ public class BilettLagring {
     private Integer quantity;
     private String film;
 
-    public BilettLagring() {
+    public TicketSaving() {
 
     }
 
-    public BilettLagring(Integer id, String email, String phone, String firstName, String lastName, Integer quantity, String film) {
+    public TicketSaving(Integer id, String email, String phone, String firstName, String lastName, Integer quantity, String film) {
         this.id = id;
         this.email = email;
         this.phone = phone;

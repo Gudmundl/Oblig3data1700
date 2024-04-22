@@ -11,21 +11,21 @@ import java.util.List;
 public class Controller {
 
     @Autowired
-    BilettRepository rep;
+    TicketRepository rep;
 
-    @PostMapping("/lagre")
-    public void save(BilettLagring ticketItem)
-    {rep.lagreBillett(ticketItem);}
+    @PostMapping("/saveTicket")
+    public void save(TicketSaving ticketItem)
+    {rep.saveTickets(ticketItem);}
 
-    @GetMapping("/hentBilletter")
-    public List<BilettLagring> getBilettliste() {
-        return  rep.hentAlleBilletter();
+    @GetMapping("/getTicketsDB")
+    public List<TicketSaving> getTicketList() {
+        return  rep.getAllTickets();
     }
-    @PostMapping("/slett")
-    public void clearForm(){rep.slettAlleBilletter();}
+    @PostMapping("/deleteAll")
+    public void clearTicketList(){rep.deleteAllTickets();}
 
     @PostMapping("/deleteOne")
-    public void deleteStudent(BilettLagring idForDelete)
+    public void deleteOneTicket(TicketSaving idForDelete)
     {rep.deleteOneTicket(idForDelete);}
 
 

@@ -10,11 +10,11 @@
 
 
     <link rel="stylesheet" href="Stylesheet.css">
-    <title>Kinobillettbestilling</title>
+    <title>Cinematicket</title>
 </head>
 <body>
 <!-- form for bestilling -->
-<h1>Kinobillettbestilling</h1>
+<h1>Cinematicket ordering</h1>
 
 
 <form id="ticketForm">
@@ -22,21 +22,21 @@
 
             <div class="form-floating col">
                 <select class="form-select" id="film" aria-label="Floating label select example">
-                    <option disabled selected>Velg film</option>
+                    <option disabled selected>Choose film</option>
                     <option value="Click 2">Click 2</option>
                     <option value="Titanic 2; Oceangate">Titanic 2; Oceangate</option>
                     <option value="Assemblers unlimited war">Assemblers unlimited war</option>
                     <option value="Cats 5">Cats 5</option>
                     <option value="Aliveocean">Aliveocean</option>
                 </select>
-                <label for="film">Velg film</label>
+                <label for="film">Choose film</label>
             </div>
 
         <div class="form-floating mb-3 col">
 
             <input type="number" id="quantity" class="form-control" min="1" required placeholder="1"/>
 
-            <label for="quantity">Antall billetter</label>
+            <label for="quantity">Number of tickets</label>
         </div>
 
     </div>
@@ -61,7 +61,7 @@
             <label for="phone">Phone number</label>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" id="buyTicketBtn" onclick="buyTicket()" >Kjøp billett</button>
+    <button type="button" class="btn btn-primary" id="buyTicketBtn" onclick="buyTicket()" >Buy ticket</button>
 </form>
 <br>
 <!--Lists of tickets -->
@@ -70,23 +70,23 @@
     <thead>
     <tr class="table-info">
         <th scope="col">ID</th>
-        <th scope="col">Navn</th>
-        <th scope="col">Epost</th>
-        <th scope="col">Telefon</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
         <th scope="col">Film</th>
-        <th scope="col">Antall</th>
+        <th scope="col">Quantity</th>
     </tr>
     </thead>
     <tbody id="ticketList">
     </tbody>
 </table>
 
-<button type="button" class="btn btn-info" id="ShowTicketsBtn" onclick="getDbTickets()" >Vis billetter</button>
+<button type="button" class="btn btn-info" id="ShowTicketsBtn" onclick="getDbTickets()" >Refresh Ticketlist</button>
 
-<button type="button" class="btn btn-outline-danger" id="clearTicketsBtn" onclick="clearTickets()">Slett alle billetter</button>
+<button type="button" class="btn btn-outline-danger" id="clearTicketsBtn" onclick="clearTickets()">Delete all tickets</button>
 <br><br>
 
-<form class="row" id="slettForm">
+<form class="row" id="deleteIdForm">
     <div class="form-floating input-group mb-3 col">
         <input type="number" class="form-control" id="deleteWithId">
         <label for="deleteWithId"></label>
