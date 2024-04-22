@@ -2,6 +2,7 @@ package com.example.oblig3data1700;
 
 public class BilettLagring {
 
+    private Integer id;
     private String email;
     private String phone;
     private String firstName;
@@ -13,13 +14,22 @@ public class BilettLagring {
 
     }
 
-    public BilettLagring(String email, String phone, String firstName, String lastName, Integer quantity, String film) {
+    public BilettLagring(Integer id, String email, String phone, String firstName, String lastName, Integer quantity, String film) {
+        this.id = id;
         this.email = email;
         this.phone = phone;
         this.firstName = firstName;
         this.lastName = lastName;
         this.quantity = quantity;
         this.film = film;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getEmail() {

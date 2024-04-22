@@ -23,8 +23,6 @@ function buyTicket() {
 
 
         sendTicketsDb();
-        getDbTickets();
-
     }
 
 }
@@ -62,40 +60,50 @@ function sendTicketsDb() {
 }
 
 function  getDbTickets(){
-    $.get("/hentBilletter", function(BilletterVis){
+    $.get("/hentBilletter", function(VisBilletter){
 
-        showDbTickets(BilletterVis);
+        showDbTickets(VisBilletter);
     });
 }
-function showDbTickets(BilletterVis){
+function showDbTickets(VisBilletter) {
+    let resetTbody = document.getElementById("ticketList");
+    resetTbody.innerHTML = '';
+    let ticketList = document.getElementById("ticketList");
 
-    let ut = "";
-    for (let ticket of BilletterVis){
-        ut += "Film: " + ticket.film + " Antall: " + ticket.quantity + " Navn: " + ticket.firstName + " " + ticket.lastName + " Telefon: " + ticket.phone + " Epost: " + ticket.email + "<br>";
-    }
-    document.getElementById("ticketList").innerHTML = ut;
-
-
-
-    /*BilletterVis.f   orEach(BilletterVis)
+    for (let ticketItem of VisBilletter) {
         let row = document.createElement("tr");
 
-    let nameCell = document.createElement("td");
-    nameCell.textContent = BilletterVis.firstName+BilletterVis.lastName;
+        let idCell = document.createElement("td");
+        idCell.textContent = ticketItem.id;
+        row.appendChild(idCell);
+
+        let nameCell = document.createElement("td");
+        nameCell.textContent = ticketItem.firstName + " " + ticketItem.lastName;
         row.appendChild(nameCell);
 
-
-    let filmCell = document.createElement("td");
-    filmCell.textContent = BilletterVis.film;
-        row.appendChild(filmCell);
-
-    let emailCell = document.createElement("td");
-    emailCell.textContent = BilletterVis.email;
+        let emailCell = document.createElement("td");
+        emailCell.textContent = ticketItem.email;
         row.appendChild(emailCell);
 
+        let phoneCell = document.createElement("td");
+        phoneCell.textContent = ticketItem.phone;
+        row.appendChild(phoneCell);
+
+        let filmCell = document.createElement("td");
+        filmCell.textContent = ticketItem.film;
+        row.appendChild(filmCell);
+
+        let quantCell = document.createElement("td");
+        quantCell.textContent = ticketItem.quantity;
+        row.appendChild(quantCell);
+
         ticketList.appendChild(row);
-*/
+    }
 }
+
+
+
+
 //clears tickets table
 function clearTickets() {
     $.post("/slett", function(){
@@ -103,5 +111,11 @@ function clearTickets() {
     });
 }
 
-
+function deleteTicketId(){
+    let idForDelete = {id: $("#deleteWithId").val()}
+    $.post("/deleteOne", idForDelete, function () {
+    });
+    document.getElementById("outputtest").innerHTML = idForDelete;
+    document.getElementById("slettForm").reset();
+}
 

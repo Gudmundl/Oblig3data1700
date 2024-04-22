@@ -20,13 +20,17 @@ public class BilettRepository {
     }
 
     public List<BilettLagring> hentAlleBilletter(){
-        String sql = "SELECT * FROM ticketItem ORDER BY id DESC";
+        String sql = "SELECT * FROM ticketItem ORDER BY id ASC ";
         return db.query(sql, new BeanPropertyRowMapper<>(BilettLagring.class));
     }
 
     public  void slettAlleBilletter(){
         String sql = "DELETE FROM ticketItem";
         db.update(sql);
+    }
+    public  void deleteOneTicket(BilettLagring idForDelete){
+        String sql = "DELETE FROM ticketItem WHERE id = ?";
+        db.update(sql, idForDelete.getId());
     }
 
 

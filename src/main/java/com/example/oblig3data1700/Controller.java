@@ -2,9 +2,8 @@ package com.example.oblig3data1700;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -18,13 +17,16 @@ public class Controller {
     public void save(BilettLagring ticketItem)
     {rep.lagreBillett(ticketItem);}
 
-    @GetMapping("/hentBiletter")
+    @GetMapping("/hentBilletter")
     public List<BilettLagring> getBilettliste() {
         return  rep.hentAlleBilletter();
     }
     @PostMapping("/slett")
     public void clearForm(){rep.slettAlleBilletter();}
 
+    @PostMapping("/deleteOne")
+    public void deleteStudent(BilettLagring idForDelete)
+    {rep.deleteOneTicket(idForDelete);}
 
 
 }

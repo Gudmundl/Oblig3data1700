@@ -63,25 +63,41 @@
     </div>
     <button type="button" class="btn btn-primary" id="buyTicketBtn" onclick="buyTicket()" >Kjøp billett</button>
 </form>
+<br>
 <!--Lists of tickets -->
 <h2>Alle billetter</h2>
-<table class="table">
+<table class="table table-striped table-bordered">
     <thead>
-    <tr>
+    <tr class="table-info">
+        <th scope="col">ID</th>
         <th scope="col">Navn</th>
-        <th scope="col">Film</th>
         <th scope="col">Epost</th>
         <th scope="col">Telefon</th>
+        <th scope="col">Film</th>
         <th scope="col">Antall</th>
     </tr>
     </thead>
     <tbody id="ticketList">
-
     </tbody>
-
-
 </table>
+
+<button type="button" class="btn btn-info" id="ShowTicketsBtn" onclick="getDbTickets()" >Vis billetter</button>
+
 <button type="button" class="btn btn-outline-danger" id="clearTicketsBtn" onclick="clearTickets()">Slett alle billetter</button>
+<br><br>
+
+<form class="row" id="slettForm">
+    <div class="form-floating input-group mb-3 col">
+        <input type="number" class="form-control" id="deleteWithId">
+        <label for="deleteWithId"></label>
+        <button class="btn btn-danger" type="button" id="deleteWithIdBtn" onclick="deleteTicketId()">Delete this ID</button>
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+</form>
+<p id="outputtest"></p>
+
 <!--links script -->
 <script src="Main.js"></script>
 
