@@ -20,7 +20,7 @@ public class TicketRepository {
     }
 
     public List<TicketSaving>getAllTickets(){
-        String sql = "SELECT * FROM ticketItem ORDER BY id ASC ";
+        String sql = "SELECT * FROM ticketItem ORDER BY lastName ASC ";
         return db.query(sql, new BeanPropertyRowMapper<>(TicketSaving.class));
     }
 
